@@ -1,0 +1,2 @@
+ALTER TABLE telemetry_readings
+ADD COLUMN IF NOT EXISTS processed_at TIMESTAMPTZ NULL;
