@@ -13,7 +13,7 @@ type AlertRow = {
 };
 
 export class AlertRepository {
-  async create(input: AlertInput): Promise<AlertRecord> {
+  async create(input: AlertInput): Promise<AlertRecord | null> {
     const id = randomUUID();
     const createdAt = new Date().toISOString();
 
@@ -42,6 +42,11 @@ export class AlertRepository {
     ];
 
     const result = await db.query<AlertRow>(query, values);
+
+    if (result.rows.length === 0) {
+      return null;
+    }
+
     const row = result.rows[0];
 
     return {

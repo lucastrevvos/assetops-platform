@@ -1,10 +1,12 @@
 import { createApp } from "./app";
 import { connectDatabase } from "./config/database";
 import { env } from "./config/env";
+import { connectProducer } from "./config/kafka";
 
 async function bootstrap() {
   try {
     await connectDatabase();
+    await connectProducer();
 
     const app = createApp();
 

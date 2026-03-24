@@ -15,5 +15,8 @@
     "@types/pg": "^8.20.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4"
   }
 }
