@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "paths": {
+      "@assetops/shared-types": ["./packages/shared-types/dist"],
+      "@assetops/shared-types/*": ["./packages/shared-types/dist/*"]
+    },
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}
