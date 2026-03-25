@@ -1,9 +1,5 @@
-import { randomUUID } from "node:crypto";
-import { AlertInput, AlertRecord } from "../types/alert";
-import { TelemetryRepository } from "../repositories/telemetry-repository";
+import { TelemetryReceivedEvent } from "@assetops/shared-types";
 import { AlertRepository } from "../repositories/alert-repository";
-import { TelemetryToProcess } from "../types/telemetry";
-import { TelemetryReceivedEvent } from "../types/telemetry-event";
 
 export class AlertProcessorService {
   constructor(private readonly alertRepository: AlertRepository) {}

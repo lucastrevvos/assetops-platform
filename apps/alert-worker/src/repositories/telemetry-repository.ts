@@ -1,5 +1,5 @@
+import { TelemetryToProcess } from "@assetops/shared-types";
 import { db } from "../config/database";
-import { TelemetryToProcess } from "../types/telemetry";
 
 type TelemetryRow = {
   id: string;

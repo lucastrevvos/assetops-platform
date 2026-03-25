@@ -1,6 +1,7 @@
 import { randomUUID } from "crypto";
-import { AlertInput, AlertRecord } from "../types/alert";
+
 import { db } from "../config/database";
+import { AlertInput, AlertRecord } from "@assetops/shared-types";
 
 type AlertRow = {
   id: string;

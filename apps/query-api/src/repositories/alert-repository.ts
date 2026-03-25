@@ -1,5 +1,5 @@
+import { AlertView } from "@assetops/shared-types";
 import { db } from "../config/database";
-import { AlertView } from "../types/alert";
 
 type AlertRow = {
   id: string;

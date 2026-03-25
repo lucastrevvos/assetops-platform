@@ -8,7 +8,10 @@
   "scripts": {
     "dev:telemetry": "npm run dev --workspace=telemetry-api",
     "dev:query": "npm run dev --workspace=query-api",
+    "dev:worker": "npm run dev --workspace=alert-worker",
+    "build:shared-types": "npm run build --workspace=@assetops/shared-types",
     "build:telemetry": "npm run build --workspace=telemetry-api",
-    "build:query": "npm run build --workspace=query-api"
+    "build:query": "npm run build --workspace=query-api",
+    "build:worker": "npm run build --workspace=alert-worker"
   }
 }

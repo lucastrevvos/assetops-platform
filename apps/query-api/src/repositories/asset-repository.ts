@@ -1,5 +1,5 @@
+import { AssetStatus, AssetView } from "@assetops/shared-types";
 import { db } from "../config/database";
-import { AssetStatus, AssetView } from "../types/asset";
 
 type AssetRow = {
   id: string;

@@ -1,5 +1,5 @@
+import { TelemetryRecord } from "@assetops/shared-types";
 import { db } from "../config/database";
-import { TelemetryRecord } from "../types/telemetry";
 
 type TelemetryRow = {
   id: string;

@@ -1,8 +1,9 @@
 import { randomUUID } from "node:crypto";
 import { TelemetryRepository } from "../repositories/telemetry-repository";
-import { TelemetryInput, TelemetryRecord } from "../types/telemetry";
+
 import { AppError } from "../errors/app-error";
 import { TelemetryEventPublisher } from "./telemetry-event.publisher";
+import { TelemetryInput, TelemetryRecord } from "@assetops/shared-types";
 
 export class TelemetryService {
   constructor(

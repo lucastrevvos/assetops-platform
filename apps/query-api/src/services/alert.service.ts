@@ -1,5 +1,5 @@
+import { AlertView } from "@assetops/shared-types";
 import { AlertRepository } from "../repositories/alert-repository";
-import { AlertView } from "../types/alert";
 
 export class AlertService {
   constructor(private readonly alertRepository: AlertRepository) {}

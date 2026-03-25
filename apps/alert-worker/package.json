@@ -17,6 +17,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "kafkajs": "^2.2.4"
+    "kafkajs": "^2.2.4",
+    "@assetops/shared-types": "1.0.0"
   }
 }

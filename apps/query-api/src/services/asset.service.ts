@@ -1,5 +1,5 @@
+import { AssetView } from "@assetops/shared-types";
 import { AssetRepository } from "../repositories/asset-repository";
-import { AssetView } from "../types/asset";
 
 export class AssetService {
   constructor(private readonly assetRepository: AssetRepository) {}

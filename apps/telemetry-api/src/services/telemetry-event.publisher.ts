@@ -1,7 +1,9 @@
+import {
+  TelemetryReceivedEvent,
+  TelemetryRecord,
+} from "@assetops/shared-types";
 import { env } from "../config/env";
 import { producer } from "../config/kafka";
-import { TelemetryRecord } from "../types/telemetry";
-import { TelemetryReceivedEvent } from "../types/telemetry-event";
 
 export class TelemetryEventPublisher {
   async publishTelemetryReceived(data: TelemetryRecord): Promise<void> {

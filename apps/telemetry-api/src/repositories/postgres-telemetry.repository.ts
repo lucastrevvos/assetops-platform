@@ -1,5 +1,6 @@
+import { TelemetryRecord } from "@assetops/shared-types";
 import { db } from "../config/database";
-import { TelemetryRecord } from "../types/telemetry";
+
 import { TelemetryRepository } from "./telemetry-repository";
 
 type TelemetryRow = {
@@ -12,7 +13,7 @@ type TelemetryRow = {
 };
 
 export class PostgresTelemetryRepository implements TelemetryRepository {
-     async create(data: TelemetryRecord): Promise<TelemetryRecord> {
+  async create(data: TelemetryRecord): Promise<TelemetryRecord> {
     const query = `
       INSERT INTO telemetry_readings (
         id,
@@ -39,28 +40,26 @@ export class PostgresTelemetryRepository implements TelemetryRepository {
     return this.mapRowToTelemetry(result.rows[0]);
   }
 
-
-    async findAll(): Promise<TelemetryRecord[]> {
-        const query = `
+  async findAll(): Promise<TelemetryRecord[]> {
+    const query = `
             SELECT id, asset_id, temperature, vibration, timestamp, received_at
             FROM telemetry_readings
             ORDER BY received_at DESC
         `;
 
-        const result = await db.query<TelemetryRow>(query)
+    const result = await db.query<TelemetryRow>(query);
 
-        return result.rows.map(this.mapRowToTelemetry)
-    }
+    return result.rows.map(this.mapRowToTelemetry);
+  }
 
-    private mapRowToTelemetry(row: TelemetryRow): TelemetryRecord {
-        return {
-            id: row.id,
-            assetId: row.asset_id,
-            temperature: Number(row.temperature),
-            vibration: Number(row.vibration),
-            timestamp: new Date(row.timestamp).toISOString(),
-            receivedAt: new Date(row.received_at).toISOString()
-        }
-    }
-
+  private mapRowToTelemetry(row: TelemetryRow): TelemetryRecord {
+    return {
+      id: row.id,
+      assetId: row.asset_id,
+      temperature: Number(row.temperature),
+      vibration: Number(row.vibration),
+      timestamp: new Date(row.timestamp).toISOString(),
+      receivedAt: new Date(row.received_at).toISOString(),
+    };
+  }
 }

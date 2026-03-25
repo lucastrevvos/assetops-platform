@@ -1,9 +1,8 @@
+import { TelemetryReceivedEvent } from "@assetops/shared-types";
 import { connectDatabase, db } from "./config/database";
-import { env } from "./config/env";
 import { connectConsumer, consumer } from "./config/kafka";
 import { AlertRepository } from "./repositories/alert-repository";
 import { AlertProcessorService } from "./services/alert-processor.service";
-import { TelemetryReceivedEvent } from "./types/telemetry-event";
 
 const alertRepository = new AlertRepository();
 const alertProcessorService = new AlertProcessorService(alertRepository);
