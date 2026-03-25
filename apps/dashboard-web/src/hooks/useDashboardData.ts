@@ -1,64 +1,27 @@
-import { useCallback, useEffect, useState } from "react";
-import { AlertView, AssetView } from "@assetops/shared-types";
-import { fetchJson } from "../services/api";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDashboardRequest } from "../store/dashboard/dashboard-slice";
+import type { AppDispatch, RootState } from "../store";
 
-type ApiResponse<T> = {
-  success: boolean;
-  data: T;
-};
+export function useDashboardData() {
+  const dispatch = useDispatch<AppDispatch>();
 
-type DashboardDataState = {
-  assets: AssetView[];
-  alerts: AlertView[];
-  isLoading: boolean;
-  error: string | null;
-  lastUpdated: string | null;
-  refresh: () => Promise<void>;
-};
-
-export function useDashboardData(): DashboardDataState {
-  const [assets, setAssets] = useState<AssetView[]>([]);
-  const [alerts, setAlerts] = useState<AlertView[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
-
-  const load = useCallback(async (isInitial = false) => {
-    try {
-      if (isInitial) setIsLoading(true);
-      setError(null);
-
-      const [assetsResponse, alertsResponse] = await Promise.all([
-        fetchJson<ApiResponse<AssetView[]>>("/assets"),
-        fetchJson<ApiResponse<AlertView[]>>("/alerts"),
-      ]);
-
-      setAssets(assetsResponse.data);
-      setAlerts(alertsResponse.data);
-      setLastUpdated(new Date().toISOString());
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Unknown error");
-    } finally {
-      if (isInitial) setIsLoading(false);
-    }
-  }, []);
+  const dashboard = useSelector((state: RootState) => state.dashboard);
 
   useEffect(() => {
-    load(true);
+    dispatch(fetchDashboardRequest());
 
     const interval = setInterval(() => {
-      load(false);
+      dispatch(fetchDashboardRequest());
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [load]);
+  }, [dispatch]);
 
   return {
-    assets,
-    alerts,
-    isLoading,
-    error,
-    lastUpdated,
-    refresh: async () => load(false),
+    ...dashboard,
+    refresh: async () => {
+      dispatch(fetchDashboardRequest());
+    },
   };
 }
