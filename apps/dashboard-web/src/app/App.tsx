@@ -10,67 +10,9 @@ import {
 } from "lucide-react";
 import { useDashboardData } from "../hooks/useDashboardData";
 import { formatDateTime } from "../utils/format";
-
-function StatusBadge({
-  status,
-}: {
-  status: "healthy" | "warning" | "critical";
-}) {
-  const styles = {
-    healthy: "bg-emerald-100 text-emerald-700 border-emerald-200",
-    warning: "bg-amber-100 text-amber-700 border-amber-200",
-    critical: "bg-rose-100 text-rose-700 border-rose-200",
-  };
-
-  return (
-    <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${styles[status]}`}
-    >
-      {status}
-    </span>
-  );
-}
-
-function SeverityBadge({ severity }: { severity: "warning" | "critical" }) {
-  const styles = {
-    warning: "bg-amber-100 text-amber-700 border-amber-200",
-    critical: "bg-rose-100 text-rose-700 border-rose-200",
-  };
-
-  return (
-    <span
-      className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${styles[severity]}`}
-    >
-      {severity}
-    </span>
-  );
-}
-
-function KpiCard({
-  title,
-  value,
-  hint,
-  icon,
-}: {
-  title: string;
-  value: string | number;
-  hint: string;
-  icon: React.ReactNode;
-}) {
-  return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-      <div className="mb-4 flex items-center justify-between">
-        <span className="text-sm font-medium text-slate-500">{title}</span>
-        <div className="rounded-2xl bg-slate-100 p-2 text-slate-700">
-          {icon}
-        </div>
-      </div>
-
-      <div className="text-3xl font-bold text-slate-900">{value}</div>
-      <p className="mt-2 text-sm text-slate-500">{hint}</p>
-    </div>
-  );
-}
+import { KpiCard } from "../components/KpiCard";
+import { StatusBadge } from "../components/StatusBadge";
+import { SeverityBadge } from "../components/SeverityBadge";
 
 function Section({
   title,
