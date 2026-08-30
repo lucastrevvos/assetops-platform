@@ -57,14 +57,17 @@ Essa separação mantém o recebimento de telemetria independente do processamen
 - Redux Saga
 - Storybook
 
-**Plataforma e infraestrutura**
+**Plataforma e infraestrutura implementadas**
 
 - Docker
 - Docker Compose
+- npm workspaces
+
+**Próximos experimentos de infraestrutura**
+
 - Kubernetes
 - Terraform
 - GCP
-- npm workspaces
 
 ## Arquitetura
 
@@ -203,7 +206,7 @@ A base atual está preparada para demonstrações locais, experimentação arqui
 - Incluir autenticação e perfis de acesso para uso multiusuário.
 - Evoluir observabilidade com métricas, logs estruturados e tracing distribuído.
 - Adicionar testes automatizados de integração entre APIs, banco e broker.
-- Publicar manifests Kubernetes e módulos Terraform para cenários de deploy em cloud.
+- Implementar e publicar manifests Kubernetes e módulos Terraform para experimentos de deploy em cloud.
 - Aprimorar visualizações históricas de telemetria no dashboard.
 
 ## O que este projeto demonstra
